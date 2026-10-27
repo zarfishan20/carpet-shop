@@ -39,7 +39,7 @@ export default function Header() {
             href="/request-a-quote"
             className="rounded-sm bg-ember px-7 py-3.5 text-[16px] font-semibold text-white shadow-md hover:brightness-95"
           >
-            Free Quote
+           Request A Quote
           </Link>
 
           <details className="relative lg:hidden">

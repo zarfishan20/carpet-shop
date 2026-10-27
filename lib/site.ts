@@ -12,6 +12,6 @@ export const site = {
     ["Sunday", "Closed"],
     
   ],
-  measurementUrl: "https://cal.com/yourshop/free-measurement",
+  measurementUrl: "https://cal.com/caramelwebstudios/free-measurement",
   googleRating: "4.9",
 };
