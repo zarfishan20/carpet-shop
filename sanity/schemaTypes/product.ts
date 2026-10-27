@@ -5,7 +5,8 @@ const getType = (doc: unknown) => (doc as { type?: string } | undefined)?.type;
 const isCarpet = (doc: unknown) => getType(doc) === "carpet";
 
 const WEAR_LAYER_TYPES = ["vinyl", "lvt", "engineered-wood"];
-const hasWearLayer = (doc: unknown) => WEAR_LAYER_TYPES.includes(getType(doc) ?? "");
+const hasWearLayer = (doc: unknown) =>
+  WEAR_LAYER_TYPES.includes(getType(doc) ?? "");
 
 export const product = defineType({
   name: "product",
@@ -33,7 +34,6 @@ export const product = defineType({
       type: "string",
       validation: (r) => r.required(),
     }),
-    
     defineField({
       name: "slug",
       type: "slug",
@@ -54,16 +54,16 @@ export const product = defineType({
       ],
       validation: (r) => r.required().min(1),
     }),
-   defineField({
-  name: "brand",
-  type: "reference",
-  to: [{ type: "brand" }],
-}),
-defineField({
-  name: "range",
-  type: "reference",
-  to: [{ type: "range" }],
-}),
+    defineField({
+      name: "brand",
+      type: "reference",
+      to: [{ type: "brand" }],
+    }),
+    defineField({
+      name: "range",
+      type: "reference",
+      to: [{ type: "range" }],
+    }),
     defineField({
       name: "color",
       type: "string",
@@ -84,6 +84,24 @@ defineField({
       },
     }),
     defineField({ name: "description", type: "text", rows: 5 }),
+
+    // Price
+    defineField({
+      name: "price",
+      title: "Price (£)",
+      type: "number",
+      description: "Leave empty to show no price",
+      validation: (r) => r.min(0),
+    }),
+    defineField({
+      name: "priceUnit",
+      title: "Price unit",
+      type: "string",
+      options: {
+        list: ["per m²", "per pack", "per linear metre", "each"],
+      },
+      initialValue: "per m²",
+    }),
 
     // Carpet only
     defineField({
